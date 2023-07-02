@@ -13,7 +13,7 @@ nav:
 theme:
   name: material
   favicon: images/favicon.ico
-  logo: 🦜️🔗
+  logo: images/langchain-logo.png
   features:
     - navigation.tabs
     - navigation.tabs.sticky
