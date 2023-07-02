@@ -5,3 +5,7 @@ panel
 jupyter_bokeh
 langchain
 tiktoken
+faiss-cpu
+pypdf
+wikipedia
+docarray

@@ -8,6 +8,10 @@ nav:
   - Introduction: index.md
   - Model,Prompts,Parsers: Model_prompt_parser.md
   - Memory: Memory.md
+  - Chains: Chains.md
+  - QnA: Question_and_Answer.md
+  - Agents: Agents.md
+  - Evaluation: Evaluation.md
   - Contact: contact.md
 
 theme:
