@@ -1,0 +1,66 @@
+site_name: LangChain for LLM Application Development
+site_description: LangChain for LLM Application Development
+site_author: Ashish Kumar
+
+copyright: "Copyright &copy; 2023 Ashish Kumar"
+
+nav:
+  - Introduction: index.md
+  - Model,Prompts,Parsers: Model_prompt_parser.md
+  - Memory: Memory.md
+  - Contact: contact.md
+
+theme:
+  name: material
+  favicon: images/favicon.ico
+  logo: images/langchain-logo.png
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+  font: false
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: orange
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: orange
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  icon:
+    repo: fontawesome/brands/git-alt
+
+markdown_extensions:
+  - attr_list
+  - admonition
+  - md_in_html
+  - meta
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.snippets:
+      base_path: docs
+  - pymdownx.superfences
+  - pymdownx.details
+
+plugins:
+  - search
+  - autorefs
+  - glightbox
+
+extra:
+  social:
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/ashishkrb7/
+  generator: false
+
+watch:
+  - docs
+  - mkdocs.yml
