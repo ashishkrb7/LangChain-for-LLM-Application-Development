@@ -1,0 +1,987 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="LangChain for LLM Application Development">
+      
+      
+        <meta name="author" content="Ashish Kumar">
+      
+      
+      
+        <link rel="prev" href="../Agents/">
+      
+      
+        <link rel="next" href="../contact/">
+      
+      <link rel="icon" href="../images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.12">
+    
+    
+      
+        <title>Evaluation - LangChain for LLM Application Development</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.85bb2934.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.a6bdf11c.min.css">
+      
+      
+
+    
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#langchain-evaluation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="LangChain for LLM Application Development" class="md-header__button md-logo" aria-label="LangChain for LLM Application Development" data-md-component="logo">
+      
+  <img src="../images/langchain-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LangChain for LLM Application Development
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Evaluation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+            
+              <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+              </label>
+            
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+            
+              <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+              </label>
+            
+          
+        </form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href=".." class="md-tabs__link">
+      Introduction
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../Model_prompt_parser/" class="md-tabs__link">
+      Model,Prompts,Parsers
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../Memory/" class="md-tabs__link">
+      Memory
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../Chains/" class="md-tabs__link">
+      Chains
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../Question_and_Answer/" class="md-tabs__link">
+      QnA
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../Agents/" class="md-tabs__link">
+      Agents
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  <li class="md-tabs__item">
+    <a href="./" class="md-tabs__link md-tabs__link--active">
+      Evaluation
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../contact/" class="md-tabs__link">
+      Contact
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="LangChain for LLM Application Development" class="md-nav__button md-logo" aria-label="LangChain for LLM Application Development" data-md-component="logo">
+      
+  <img src="../images/langchain-logo.png" alt="logo">
+
+    </a>
+    LangChain for LLM Application Development
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Model_prompt_parser/" class="md-nav__link">
+        Model,Prompts,Parsers
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Memory/" class="md-nav__link">
+        Memory
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chains/" class="md-nav__link">
+        Chains
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Question_and_Answer/" class="md-nav__link">
+        QnA
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Agents/" class="md-nav__link">
+        Agents
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Evaluation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Evaluation
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#outline" class="md-nav__link">
+    Outline:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-our-qanda-application" class="md-nav__link">
+    Create our QandA application
+  </a>
+  
+    <nav class="md-nav" aria-label="Create our QandA application">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#coming-up-with-test-datapoints" class="md-nav__link">
+    Coming up with test datapoints
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hard-coded-examples" class="md-nav__link">
+    Hard-coded examples
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llm-generated-examples" class="md-nav__link">
+    LLM-Generated examples
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#combine-examples" class="md-nav__link">
+    Combine examples
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manual-evaluation" class="md-nav__link">
+    Manual Evaluation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#llm-assisted-evaluation" class="md-nav__link">
+    LLM assisted evaluation
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contact/" class="md-nav__link">
+        Contact
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#outline" class="md-nav__link">
+    Outline:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-our-qanda-application" class="md-nav__link">
+    Create our QandA application
+  </a>
+  
+    <nav class="md-nav" aria-label="Create our QandA application">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#coming-up-with-test-datapoints" class="md-nav__link">
+    Coming up with test datapoints
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hard-coded-examples" class="md-nav__link">
+    Hard-coded examples
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llm-generated-examples" class="md-nav__link">
+    LLM-Generated examples
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#combine-examples" class="md-nav__link">
+    Combine examples
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manual-evaluation" class="md-nav__link">
+    Manual Evaluation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#llm-assisted-evaluation" class="md-nav__link">
+    LLM assisted evaluation
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="langchain-evaluation">LangChain: Evaluation</h1>
+<h2 id="outline">Outline:</h2>
+<ul>
+<li>Example generation</li>
+<li>Manual evaluation (and debuging)</li>
+<li>LLM-assisted evaluation</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span><span class="p">,</span> <span class="n">find_dotenv</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">load_dotenv</span><span class="p">(</span><span class="n">find_dotenv</span><span class="p">())</span> <span class="c1"># read local .env file</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># Set OpenAI API key</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;OPENAI_API_TYPE&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;api_type&quot;</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;OPENAI_API_BASE&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;api_base&quot;</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;OPENAI_API_VERSION&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;api_version&quot;</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;OPENAI_API_KEY&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;OPENAI_API_KEY&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="create-our-qanda-application">Create our QandA application</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">langchain.chains</span> <span class="kn">import</span> <span class="n">RetrievalQA</span>
+<span class="kn">from</span> <span class="nn">langchain.chat_models</span> <span class="kn">import</span> <span class="n">AzureChatOpenAI</span>
+<span class="kn">from</span> <span class="nn">langchain.document_loaders</span> <span class="kn">import</span> <span class="n">CSVLoader</span>
+<span class="kn">from</span> <span class="nn">langchain.indexes</span> <span class="kn">import</span> <span class="n">VectorstoreIndexCreator</span>
+<span class="kn">from</span> <span class="nn">langchain.vectorstores</span> <span class="kn">import</span> <span class="n">DocArrayInMemorySearch</span>
+<span class="kn">from</span> <span class="nn">langchain.embeddings</span> <span class="kn">import</span> <span class="n">OpenAIEmbeddings</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">file</span> <span class="o">=</span> <span class="s1">&#39;OutdoorClothingCatalog_1000.csv&#39;</span>
+<span class="n">loader</span> <span class="o">=</span> <span class="n">CSVLoader</span><span class="p">(</span><span class="n">file_path</span><span class="o">=</span><span class="n">file</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">embeddings</span> <span class="o">=</span> <span class="n">OpenAIEmbeddings</span><span class="p">(</span><span class="n">model</span> <span class="o">=</span> <span class="s2">&quot;text-embedding-ada-002&quot;</span><span class="p">,</span><span class="n">chunk_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">index</span> <span class="o">=</span> <span class="n">VectorstoreIndexCreator</span><span class="p">(</span>
+    <span class="n">vectorstore_cls</span><span class="o">=</span><span class="n">DocArrayInMemorySearch</span><span class="p">,</span>
+    <span class="n">embedding</span> <span class="o">=</span> <span class="n">embeddings</span>
+<span class="p">)</span><span class="o">.</span><span class="n">from_loaders</span><span class="p">([</span><span class="n">loader</span><span class="p">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">llm</span> <span class="o">=</span> <span class="n">AzureChatOpenAI</span><span class="p">(</span><span class="n">deployment_name</span><span class="o">=</span><span class="s2">&quot;chatgpt-gpt35-turbo&quot;</span><span class="p">,</span><span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;gpt-35-turbo&quot;</span><span class="p">,</span><span class="n">temperature</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="n">qa</span> <span class="o">=</span> <span class="n">RetrievalQA</span><span class="o">.</span><span class="n">from_chain_type</span><span class="p">(</span>
+    <span class="n">llm</span><span class="o">=</span><span class="n">llm</span><span class="p">,</span> 
+    <span class="n">chain_type</span><span class="o">=</span><span class="s2">&quot;stuff&quot;</span><span class="p">,</span> 
+    <span class="n">retriever</span><span class="o">=</span><span class="n">index</span><span class="o">.</span><span class="n">vectorstore</span><span class="o">.</span><span class="n">as_retriever</span><span class="p">(),</span> 
+    <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">chain_type_kwargs</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;document_separator&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;&lt;&lt;&lt;&gt;&gt;&gt;&gt;&gt;&quot;</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="coming-up-with-test-datapoints">Coming up with test datapoints</h3>
+<div class="highlight"><pre><span></span><code><span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</code></pre></div>
+<pre><code>Document(lc_kwargs={'page_content': ": 2\nname: Infant and Toddler Girls' Coastal Chill Swimsuit, Two-Piece\ndescription: She'll love the bright colors, ruffles and exclusive whimsical prints of this toddler's two-piece swimsuit! Our four-way-stretch and chlorine-resistant fabric keeps its shape and resists snags. The UPF 50+ rated fabric provides the highest rated sun protection possible, blocking 98% of the sun's harmful rays. The crossover no-slip straps and fully lined bottom ensure a secure fit and maximum coverage. Machine wash and line dry for best results. Imported.", 'metadata': {'source': 'OutdoorClothingCatalog_1000.csv', 'row': 2}}, page_content=": 2\nname: Infant and Toddler Girls' Coastal Chill Swimsuit, Two-Piece\ndescription: She'll love the bright colors, ruffles and exclusive whimsical prints of this toddler's two-piece swimsuit! Our four-way-stretch and chlorine-resistant fabric keeps its shape and resists snags. The UPF 50+ rated fabric provides the highest rated sun protection possible, blocking 98% of the sun's harmful rays. The crossover no-slip straps and fully lined bottom ensure a secure fit and maximum coverage. Machine wash and line dry for best results. Imported.", metadata={'source': 'OutdoorClothingCatalog_1000.csv', 'row': 2})
+</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">data</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+</code></pre></div>
+<pre><code>Document(lc_kwargs={'page_content': ": 3\nname: Refresh Swimwear, V-Neck Tankini Contrasts\ndescription: Whether you're going for a swim or heading out on an SUP, this watersport-ready tankini top is designed to move with you and stay comfortable. All while looking great in an eye-catching colorblock style. \n\nSize &amp; Fit\nFitted: Sits close to the body.\n\nWhy We Love It\nNot only does this swimtop feel good to wear, its fabric is good for the earth too. In recycled nylon, with Lycra® spandex for the perfect amount of stretch. \n\nFabric &amp; Care\nThe premium Italian-blend is breathable, quick drying and abrasion resistant. \nBody in 82% recycled nylon with 18% Lycra® spandex. \nLined in 90% recycled nylon with 10% Lycra® spandex. \nUPF 50+ rated – the highest rated sun protection possible. \nHandwash, line dry.\n\nAdditional Features\nLightweight racerback straps are easy to get on and off, and won't get in your way. \nFlattering V-neck silhouette. \nImported.\n\nSun Protection That Won't Wear Off\nOur high-performance fabric provides SPF", 'metadata': {'source': 'OutdoorClothingCatalog_1000.csv', 'row': 3}}, page_content=": 3\nname: Refresh Swimwear, V-Neck Tankini Contrasts\ndescription: Whether you're going for a swim or heading out on an SUP, this watersport-ready tankini top is designed to move with you and stay comfortable. All while looking great in an eye-catching colorblock style. \n\nSize &amp; Fit\nFitted: Sits close to the body.\n\nWhy We Love It\nNot only does this swimtop feel good to wear, its fabric is good for the earth too. In recycled nylon, with Lycra® spandex for the perfect amount of stretch. \n\nFabric &amp; Care\nThe premium Italian-blend is breathable, quick drying and abrasion resistant. \nBody in 82% recycled nylon with 18% Lycra® spandex. \nLined in 90% recycled nylon with 10% Lycra® spandex. \nUPF 50+ rated – the highest rated sun protection possible. \nHandwash, line dry.\n\nAdditional Features\nLightweight racerback straps are easy to get on and off, and won't get in your way. \nFlattering V-neck silhouette. \nImported.\n\nSun Protection That Won't Wear Off\nOur high-performance fabric provides SPF", metadata={'source': 'OutdoorClothingCatalog_1000.csv', 'row': 3})
+</code></pre>
+<h3 id="hard-coded-examples">Hard-coded examples</h3>
+<div class="highlight"><pre><span></span><code><span class="n">examples</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="s2">&quot;Do the Cozy Comfort Pullover Set</span><span class="se">\</span>
+<span class="s2">        have side pockets?&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;answer&quot;</span><span class="p">:</span> <span class="s2">&quot;Yes&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="s2">&quot;What collection is the Ultra-Lofty </span><span class="se">\</span>
+<span class="s2">        850 Stretch Down Hooded Jacket from?&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;answer&quot;</span><span class="p">:</span> <span class="s2">&quot;The DownTek collection&quot;</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
+<h3 id="llm-generated-examples">LLM-Generated examples</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">langchain.evaluation.qa</span> <span class="kn">import</span> <span class="n">QAGenerateChain</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">example_gen_chain</span> <span class="o">=</span> <span class="n">QAGenerateChain</span><span class="o">.</span><span class="n">from_llm</span><span class="p">(</span><span class="n">llm</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">new_examples</span> <span class="o">=</span> <span class="n">example_gen_chain</span><span class="o">.</span><span class="n">apply_and_parse</span><span class="p">(</span>
+    <span class="p">[{</span><span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="n">t</span><span class="p">}</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[:</span><span class="mi">5</span><span class="p">]]</span>
+<span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">new_examples</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div>
+<pre><code>{'query': "What is the weight of the Women's Campside Oxfords per pair?",
+ 'answer': "The Women's Campside Oxfords weigh approximately 1 lb. 1 oz. per pair."}
+</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div>
+<pre><code>Document(lc_kwargs={'page_content': ": 0\nname: Women's Campside Oxfords\ndescription: This ultracomfortable lace-to-toe Oxford boasts a super-soft canvas, thick cushioning, and quality construction for a broken-in feel from the first time you put them on. \n\nSize &amp; Fit: Order regular shoe size. For half sizes not offered, order up to next whole size. \n\nSpecs: Approx. weight: 1 lb.1 oz. per pair. \n\nConstruction: Soft canvas material for a broken-in feel and look. Comfortable EVA innersole with Cleansport NXT® antimicrobial odor control. Vintage hunt, fish and camping motif on innersole. Moderate arch contour of innersole. EVA foam midsole for cushioning and support. Chain-tread-inspired molded rubber outsole with modified chain-tread pattern. Imported. \n\nQuestions? Please contact us for any inquiries.", 'metadata': {'source': 'OutdoorClothingCatalog_1000.csv', 'row': 0}}, page_content=": 0\nname: Women's Campside Oxfords\ndescription: This ultracomfortable lace-to-toe Oxford boasts a super-soft canvas, thick cushioning, and quality construction for a broken-in feel from the first time you put them on. \n\nSize &amp; Fit: Order regular shoe size. For half sizes not offered, order up to next whole size. \n\nSpecs: Approx. weight: 1 lb.1 oz. per pair. \n\nConstruction: Soft canvas material for a broken-in feel and look. Comfortable EVA innersole with Cleansport NXT® antimicrobial odor control. Vintage hunt, fish and camping motif on innersole. Moderate arch contour of innersole. EVA foam midsole for cushioning and support. Chain-tread-inspired molded rubber outsole with modified chain-tread pattern. Imported. \n\nQuestions? Please contact us for any inquiries.", metadata={'source': 'OutdoorClothingCatalog_1000.csv', 'row': 0})
+</code></pre>
+<h3 id="combine-examples">Combine examples</h3>
+<div class="highlight"><pre><span></span><code><span class="n">examples</span> <span class="o">+=</span> <span class="n">new_examples</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">qa</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">examples</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;query&quot;</span><span class="p">])</span>
+</code></pre></div>
+<pre><code>Error in on_chain_start callback: 'name'
+
+
+
+[1m&gt; Finished chain.[0m
+
+
+
+
+
+"I'm sorry, but I don't have any information about the Cozy Comfort Pullover Set. The context provided does not mention this product."
+</code></pre>
+<h2 id="manual-evaluation">Manual Evaluation</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">langchain</span>
+<span class="n">langchain</span><span class="o">.</span><span class="n">debug</span> <span class="o">=</span> <span class="kc">True</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">qa</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">examples</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;query&quot;</span><span class="p">])</span>
+</code></pre></div>
+<pre><code>[32;1m[1;3m[chain/start][0m [1m[1:chain:RetrievalQA] Entering Chain run with input:
+[0m{
+  "query": "Do the Cozy Comfort Pullover Set        have side pockets?"
+}
+[32;1m[1;3m[chain/start][0m [1m[1:chain:RetrievalQA &gt; 2:chain:StuffDocumentsChain] Entering Chain run with input:
+[0m[inputs]
+[32;1m[1;3m[chain/start][0m [1m[1:chain:RetrievalQA &gt; 2:chain:StuffDocumentsChain &gt; 3:chain:LLMChain] Entering Chain run with input:
+[0m{
+  "question": "Do the Cozy Comfort Pullover Set        have side pockets?",
+  "context": "Additional Features: Three-layer shell delivers waterproof protection. Brand new TEK O2 technology provides enhanced breathability. Interior gaiters keep out rain and snow. Full side zips for easy on/off over boots. Two zippered hand pockets. Thigh pocket. Imported.\n\n – Official Supplier to the U.S. Ski Team\nTHEIR WILL&lt;&lt;&lt;&lt;&gt;&gt;&gt;&gt;&gt;: 5\nname: Smooth Comfort Check Shirt, Slightly Fitted\ndescription: Our men's slightly fitted check shirt is the perfect choice for your wardrobe! Customers love how it fits right out of the dryer. Size &amp; Fit: Slightly Fitted, Relaxed through the chest and sleeve with a slightly slimmer waist. Fabric &amp; Care: 100% cotton poplin, with wrinkle-free performance that won't wash out. Our innovative TrueCool® fabric wicks moisture away from your skin and helps it dry quickly. Additional Features: Traditional styling with a button-down collar and a single patch pocket. Imported.&lt;&lt;&lt;&lt;&gt;&gt;&gt;&gt;&gt;: 4\nname: EcoFlex 3L Storm Pants\ndescription: Our new TEK O2 technology makes our four-season waterproof pants even more breathable. It's guaranteed to keep you dry and comfortable – whatever the activity and whatever the weather. Size &amp; Fit: Slightly Fitted through hip and thigh. \n\nWhy We Love It: Our state-of-the-art TEK O2 technology offers the most breathability we've ever tested. Great as ski pants, they're ideal for a variety of outdoor activities year-round. Plus, they're loaded with features outdoor enthusiasts appreciate, including weather-blocking gaiters and handy side zips. Air In. Water Out. See how our air-permeable TEK O2 technology keeps you dry and comfortable. \n\nFabric &amp; Care: 100% nylon, exclusive of trim. Machine wash and dry.&lt;&lt;&lt;&lt;&gt;&gt;&gt;&gt;&gt;: 2\nname: Infant and Toddler Girls' Coastal Chill Swimsuit, Two-Piece\ndescription: She'll love the bright colors, ruffles and exclusive whimsical prints of this toddler's two-piece swimsuit! Our four-way-stretch and chlorine-resistant fabric keeps its shape and resists snags. The UPF 50+ rated fabric provides the highest rated sun protection possible, blocking 98% of the sun's harmful rays. The crossover no-slip straps and fully lined bottom ensure a secure fit and maximum coverage. Machine wash and line dry for best results. Imported."
+}
+[32;1m[1;3m[llm/start][0m [1m[1:chain:RetrievalQA &gt; 2:chain:StuffDocumentsChain &gt; 3:chain:LLMChain &gt; 4:llm:AzureChatOpenAI] Entering LLM run with input:
+[0m{
+  "prompts": [
+    "System: Use the following pieces of context to answer the users question. \nIf you don't know the answer, just say that you don't know, don't try to make up an answer.\n----------------\nAdditional Features: Three-layer shell delivers waterproof protection. Brand new TEK O2 technology provides enhanced breathability. Interior gaiters keep out rain and snow. Full side zips for easy on/off over boots. Two zippered hand pockets. Thigh pocket. Imported.\n\n – Official Supplier to the U.S. Ski Team\nTHEIR WILL&lt;&lt;&lt;&lt;&gt;&gt;&gt;&gt;&gt;: 5\nname: Smooth Comfort Check Shirt, Slightly Fitted\ndescription: Our men's slightly fitted check shirt is the perfect choice for your wardrobe! Customers love how it fits right out of the dryer. Size &amp; Fit: Slightly Fitted, Relaxed through the chest and sleeve with a slightly slimmer waist. Fabric &amp; Care: 100% cotton poplin, with wrinkle-free performance that won't wash out. Our innovative TrueCool® fabric wicks moisture away from your skin and helps it dry quickly. Additional Features: Traditional styling with a button-down collar and a single patch pocket. Imported.&lt;&lt;&lt;&lt;&gt;&gt;&gt;&gt;&gt;: 4\nname: EcoFlex 3L Storm Pants\ndescription: Our new TEK O2 technology makes our four-season waterproof pants even more breathable. It's guaranteed to keep you dry and comfortable – whatever the activity and whatever the weather. Size &amp; Fit: Slightly Fitted through hip and thigh. \n\nWhy We Love It: Our state-of-the-art TEK O2 technology offers the most breathability we've ever tested. Great as ski pants, they're ideal for a variety of outdoor activities year-round. Plus, they're loaded with features outdoor enthusiasts appreciate, including weather-blocking gaiters and handy side zips. Air In. Water Out. See how our air-permeable TEK O2 technology keeps you dry and comfortable. \n\nFabric &amp; Care: 100% nylon, exclusive of trim. Machine wash and dry.&lt;&lt;&lt;&lt;&gt;&gt;&gt;&gt;&gt;: 2\nname: Infant and Toddler Girls' Coastal Chill Swimsuit, Two-Piece\ndescription: She'll love the bright colors, ruffles and exclusive whimsical prints of this toddler's two-piece swimsuit! Our four-way-stretch and chlorine-resistant fabric keeps its shape and resists snags. The UPF 50+ rated fabric provides the highest rated sun protection possible, blocking 98% of the sun's harmful rays. The crossover no-slip straps and fully lined bottom ensure a secure fit and maximum coverage. Machine wash and line dry for best results. Imported.\nHuman: Do the Cozy Comfort Pullover Set        have side pockets?"
+  ]
+}
+[36;1m[1;3m[llm/end][0m [1m[1:chain:RetrievalQA &gt; 2:chain:StuffDocumentsChain &gt; 3:chain:LLMChain &gt; 4:llm:AzureChatOpenAI] [1.13s] Exiting LLM run with output:
+[0m{
+  "generations": [
+    [
+      {
+        "text": "I'm sorry, but I don't have any information about the Cozy Comfort Pullover Set. The context provided does not mention this product.",
+        "generation_info": null,
+        "message": {
+          "content": "I'm sorry, but I don't have any information about the Cozy Comfort Pullover Set. The context provided does not mention this product.",
+          "additional_kwargs": {},
+          "example": false
+        }
+      }
+    ]
+  ],
+  "llm_output": {
+    "token_usage": {
+      "completion_tokens": 29,
+      "prompt_tokens": 561,
+      "total_tokens": 590
+    },
+    "model_name": "gpt-35-turbo"
+  },
+  "run": null
+}
+[36;1m[1;3m[chain/end][0m [1m[1:chain:RetrievalQA &gt; 2:chain:StuffDocumentsChain &gt; 3:chain:LLMChain] [1.13s] Exiting Chain run with output:
+[0m{
+  "text": "I'm sorry, but I don't have any information about the Cozy Comfort Pullover Set. The context provided does not mention this product."
+}
+[36;1m[1;3m[chain/end][0m [1m[1:chain:RetrievalQA &gt; 2:chain:StuffDocumentsChain] [1.13s] Exiting Chain run with output:
+[0m{
+  "output_text": "I'm sorry, but I don't have any information about the Cozy Comfort Pullover Set. The context provided does not mention this product."
+}
+[36;1m[1;3m[chain/end][0m [1m[1:chain:RetrievalQA] [1.57s] Exiting Chain run with output:
+[0m{
+  "result": "I'm sorry, but I don't have any information about the Cozy Comfort Pullover Set. The context provided does not mention this product."
+}
+
+
+
+
+
+"I'm sorry, but I don't have any information about the Cozy Comfort Pullover Set. The context provided does not mention this product."
+</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># Turn off the debug mode</span>
+<span class="n">langchain</span><span class="o">.</span><span class="n">debug</span> <span class="o">=</span> <span class="kc">False</span>
+</code></pre></div>
+<h2 id="llm-assisted-evaluation">LLM assisted evaluation</h2>
+<div class="highlight"><pre><span></span><code><span class="n">predictions</span> <span class="o">=</span> <span class="n">qa</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">examples</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>Error in on_chain_start callback: 'name'
+Error in on_chain_start callback: 'name'
+
+
+
+[1m&gt; Finished chain.[0m
+
+
+Error in on_chain_start callback: 'name'
+
+
+
+[1m&gt; Finished chain.[0m
+
+
+Error in on_chain_start callback: 'name'
+
+
+
+[1m&gt; Finished chain.[0m
+
+
+Error in on_chain_start callback: 'name'
+
+
+
+[1m&gt; Finished chain.[0m
+
+
+Error in on_chain_start callback: 'name'
+
+
+
+[1m&gt; Finished chain.[0m
+
+
+Error in on_chain_start callback: 'name'
+
+
+
+[1m&gt; Finished chain.[0m
+
+[1m&gt; Finished chain.[0m
+</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">langchain.evaluation.qa</span> <span class="kn">import</span> <span class="n">QAEvalChain</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">eval_chain</span> <span class="o">=</span> <span class="n">QAEvalChain</span><span class="o">.</span><span class="n">from_llm</span><span class="p">(</span><span class="n">llm</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">graded_outputs</span> <span class="o">=</span> <span class="n">eval_chain</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">examples</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">eg</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">examples</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Example </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Question: &quot;</span> <span class="o">+</span> <span class="n">predictions</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;query&#39;</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Real Answer: &quot;</span> <span class="o">+</span> <span class="n">predictions</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;answer&#39;</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Predicted Answer: &quot;</span> <span class="o">+</span> <span class="n">predictions</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;result&#39;</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Predicted Grade: &quot;</span> <span class="o">+</span> <span class="n">graded_outputs</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;text&#39;</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">()</span>
+</code></pre></div>
+<pre><code>Example 0:
+Question: Do the Cozy Comfort Pullover Set        have side pockets?
+Real Answer: Yes
+Predicted Answer: I'm sorry, but I don't have any information about the Cozy Comfort Pullover Set. The context provided does not mention this product.
+Predicted Grade: INCORRECT
+
+Example 1:
+Question: What collection is the Ultra-Lofty         850 Stretch Down Hooded Jacket from?
+Real Answer: The DownTek collection
+Predicted Answer: There is no information provided about the Ultra-Lofty 850 Stretch Down Hooded Jacket's collection.
+Predicted Grade: INCORRECT
+
+Example 2:
+Question: What is the weight of the Women's Campside Oxfords per pair?
+Real Answer: The Women's Campside Oxfords weigh approximately 1 lb. 1 oz. per pair.
+Predicted Answer: The Women's Campside Oxfords weigh approximately 1 lb. 1 oz. per pair.
+Predicted Grade: CORRECT
+
+Example 3:
+Question: What are the dimensions of the small and medium Recycled Waterhog Dog Mat?
+Real Answer: The small Recycled Waterhog Dog Mat has dimensions of 18" x 28" and the medium has dimensions of 22.5" x 34.5".
+Predicted Answer: The small Recycled Waterhog Dog Mat has dimensions of 18" x 28" and the medium size has dimensions of 22.5" x 34.5".
+Predicted Grade: CORRECT
+
+Example 4:
+Question: What are the features of the Infant and Toddler Girls' Coastal Chill Swimsuit, Two-Piece?
+Real Answer: The Infant and Toddler Girls' Coastal Chill Swimsuit, Two-Piece features bright colors, ruffles, and exclusive whimsical prints. The four-way-stretch and chlorine-resistant fabric keeps its shape and resists snags. The UPF 50+ rated fabric provides the highest rated sun protection possible, blocking 98% of the sun's harmful rays. The crossover no-slip straps and fully lined bottom ensure a secure fit and maximum coverage. It can be machine washed and line dried for best results.
+Predicted Answer: The Infant and Toddler Girls' Coastal Chill Swimsuit, Two-Piece features bright colors, ruffles, and exclusive whimsical prints. The swimsuit is made of four-way-stretch and chlorine-resistant fabric that keeps its shape and resists snags. The UPF 50+ rated fabric provides the highest rated sun protection possible, blocking 98% of the sun's harmful rays. The crossover no-slip straps and fully lined bottom ensure a secure fit and maximum coverage. The swimsuit can be machine washed and line dried for best results.
+Predicted Grade: CORRECT
+
+Example 5:
+Question: What is the fabric composition of the Refresh Swimwear, V-Neck Tankini Contrasts?
+Real Answer: The Refresh Swimwear, V-Neck Tankini Contrasts is made of 82% recycled nylon and 18% Lycra® spandex for the body, and 90% recycled nylon and 10% Lycra® spandex for the lining.
+Predicted Answer: The Refresh Swimwear, V-Neck Tankini Contrasts is made of 82% recycled nylon with 18% Lycra® spandex for the body and 90% recycled nylon with 10% Lycra® spandex for the lining.
+Predicted Grade: CORRECT
+
+Example 6:
+Question: What is the new technology used in the EcoFlex 3L Storm Pants and what is its benefit?
+Real Answer: The new technology used in the EcoFlex 3L Storm Pants is TEK O2 technology, which makes the pants more breathable. Its benefit is that it keeps the wearer dry and comfortable in any activity and weather.
+Predicted Answer: The new technology used in the EcoFlex 3L Storm Pants is called TEK O2 technology, which offers enhanced breathability. This means that the pants are more comfortable to wear and will keep you dry and comfortable during outdoor activities, no matter the weather.
+Predicted Grade: CORRECT
+</code></pre>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 Ashish Kumar
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/ashishkrb7/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c2be25ad.min.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>
